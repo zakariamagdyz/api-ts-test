@@ -17,7 +17,11 @@ export function selectFields<T extends OriginalObjType>(
   return newObj as T;
 }
 
-// exclude fields from an object
+/*
+ * exclude fields from an object
+ * @params {Object}
+ * @params [string []]
+ */
 
 export function omitFileds<T extends OriginalObjType>(
   obj: string,

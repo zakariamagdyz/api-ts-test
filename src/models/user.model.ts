@@ -1,4 +1,4 @@
-import mongoose, { HydratedDocument } from "mongoose";
+import mongoose, { HydratedDocument, ObjectId } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface UserInput {
@@ -8,6 +8,7 @@ export interface UserInput {
 }
 
 export interface UserDocument extends UserInput {
+  _id: ObjectId;
   role: string;
   createdAt: Date;
   updatedAt: Date;
@@ -45,4 +46,4 @@ userSchema.methods.comparePassword = async function (
   return await bcrypt.compare(candidatePassword, user.password);
 };
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model<UserDocument>("User", userSchema);
